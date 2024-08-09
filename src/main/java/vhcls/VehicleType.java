@@ -1,5 +1,5 @@
 package vhcls;
 
-public enum VehicleTyp {
+public enum VehicleType {
     TRUCK,CAR,BUS,TRAILER
 }
