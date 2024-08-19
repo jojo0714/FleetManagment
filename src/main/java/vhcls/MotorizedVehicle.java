@@ -2,8 +2,11 @@ package vhcls;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
+import java.util.List;
 
 public class MotorizedVehicle implements Vehicles{
+
+    //TODO Add all constructor parameters to the constructor
     /*
     Constructor parameter
      */
@@ -20,8 +23,10 @@ public class MotorizedVehicle implements Vehicles{
     Additional parameter
      */
 
-    String mainDriver;
-    LinkedList<String> drivers = new LinkedList<>(null);
+    private String mainDriver;
+    private LinkedList<String> drivers = new LinkedList<>();
+
+
     /**
      * Constructor has to be called with public method loadVehicle or newVehicle
      * @param chassisNumber The official identification number of the vehicle
@@ -37,6 +42,13 @@ public class MotorizedVehicle implements Vehicles{
         this.weight = weight;
     }
 
+    public MotorizedVehicle(String chassisNumber, VehicleType type, LocalDate initialRegistrationDate) {
+
+        CHASSIS_NUMBER = chassisNumber;
+        TYPE = type;
+        INITIAL_REGISTRATION_DATE = initialRegistrationDate;
+    }
+
     /**
      * Method to create a new vehicle
      * @param chassisNumber Official chassis number
@@ -49,11 +61,26 @@ public class MotorizedVehicle implements Vehicles{
      * @param weight
      * @return
      */
-    public MotorizedVehicle newVehicle(String chassisNumber, VehicleType type, LocalDate initialRegistrationDate,
-                                       String registeredCountry, String owner, String numberPlate, int maxSpeed, int weight) {
+    public static MotorizedVehicle newVehicle(EngineType engineType, String chassisNumber, VehicleType type,
+                                              LocalDate initialRegistrationDate, String registeredCountry,
+                                              String owner, String numberPlate,
+                                              int maxSpeed, int weight) throws IllegalArgumentException {
+        switch (engineType) {
+            case ELECTRIC -> {
+                return ElectricVehicle.newVehicle();
+            }
+            case HYBRID -> throw new IllegalArgumentException("[" + MotorizedVehicle.class.getName() +
+                    "]:  Hybrid Vehicle Type not supported");
+            default -> {
+                new MotorizedVehicle(chassisNumber, type, initialRegistrationDate,
+                        registeredCountry, owner, numberPlate,maxSpeed,weight);
+            }
+        }
+        System.out.println("Checkpot!");
         return new MotorizedVehicle(chassisNumber, type, initialRegistrationDate,
                 registeredCountry, owner, numberPlate,maxSpeed,weight);
     }
+
 
     /**
      * Method to get the ident number of the vehicle

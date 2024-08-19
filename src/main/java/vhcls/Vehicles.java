@@ -63,4 +63,5 @@ public interface Vehicles {
      * @return Weight of vehicle as int
      */
     int getWeight();
+
 }
