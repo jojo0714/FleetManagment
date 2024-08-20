@@ -22,9 +22,16 @@ public interface Inspection {
     boolean isValid();
 
     /**
+     *
+     * @return
+     */
+    boolean isDue();//TODO insert documentation text
+
+    /**
      * Method to know how many years allowed between two inspections
      * @return
      */
     double getInspectionFrequency();
+
 
 }
