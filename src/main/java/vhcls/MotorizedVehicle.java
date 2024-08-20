@@ -13,7 +13,7 @@ public class MotorizedVehicle implements Vehicles{
     private final String CHASSIS_NUMBER;
     private final VehicleType TYPE;
     private final LocalDate INITIAL_REGISTRATION_DATE;
-    private String registeredCountry = null;
+    private String registeredCountry;
     private String owner;
     private String numberPlate;
     private int maxSpeed;
@@ -31,7 +31,7 @@ public class MotorizedVehicle implements Vehicles{
      * Constructor has to be called with public method loadVehicle or newVehicle
      * @param chassisNumber The official identification number of the vehicle
      */
-    private MotorizedVehicle(String chassisNumber, VehicleType TYPE, LocalDate initialRegistrationDate,
+    protected MotorizedVehicle(String chassisNumber, VehicleType TYPE, LocalDate initialRegistrationDate,
                              String registeredCountry, String owner, String numberPlate, int maxSpeed, int weight) {
         this.CHASSIS_NUMBER = chassisNumber;
         this.TYPE = TYPE;
@@ -42,12 +42,6 @@ public class MotorizedVehicle implements Vehicles{
         this.weight = weight;
     }
 
-    public MotorizedVehicle(String chassisNumber, VehicleType type, LocalDate initialRegistrationDate) {
-
-        CHASSIS_NUMBER = chassisNumber;
-        TYPE = type;
-        INITIAL_REGISTRATION_DATE = initialRegistrationDate;
-    }
 
     /**
      * Method to create a new vehicle
@@ -79,6 +73,26 @@ public class MotorizedVehicle implements Vehicles{
         System.out.println("Checkpot!");
         return new MotorizedVehicle(chassisNumber, type, initialRegistrationDate,
                 registeredCountry, owner, numberPlate,maxSpeed,weight);
+    }
+
+    /**
+     * Method to load an existing vehicle. Method requires only one parameter, the other one can be null
+     *
+     * @param chasisNumber The official chassis Number of the vehicle
+     * @param numberPlate
+     * @return
+     */
+    public MotorizedVehicle loadVehicle(String chasisNumber, String numberPlate) {
+        return null;
+    }
+
+    /**
+     * @param chasisNumber
+     * @param numberPlate
+     * @return
+     */
+    public boolean deleteVehicle(String chasisNumber, String numberPlate) {
+        return false;
     }
 
 
@@ -136,8 +150,7 @@ public class MotorizedVehicle implements Vehicles{
     }
 
     /**
-     * Method to get the owner of the vehicle
-     *
+     * Method to get the owner of the vehicle, first and last name seperated by a +
      * @return Owner of the vehicle as String
      */
     @Override
@@ -147,17 +160,16 @@ public class MotorizedVehicle implements Vehicles{
 
     /**
      * Method to set the owner of the vehicle
-     *
      * @param ownerFirstName Requires a String. Set the first name of the owner
      * @param ownerLastName  Requires a String. Set the last name of the owner
      */
     @Override
     public void setOwner(String ownerFirstName, String ownerLastName) {
+        this.owner = ownerLastName + "+" + ownerFirstName;
     }
 
     /**
      * Method to get the maximum speed
-     *
      * @return Maximum speed as int
      */
     @Override
@@ -167,7 +179,6 @@ public class MotorizedVehicle implements Vehicles{
 
     /**
      * Method to get the empty weight of the vehicle
-     *
      * @return Weight of vehicle as int
      */
     @Override

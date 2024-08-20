@@ -8,7 +8,7 @@ public class Main {
         final String CHASSIS_NUMBER = "6UH283699JNSUW";
         final VehicleType TYPE = VehicleType.CAR;
         final LocalDate INITIAL_REGISTRATION_DATE =  LocalDate.now(); //LocalDate.of(2020,1,1);
-        String registeredCountry = "DE";
+        String registeredCountry = "D";
         String owner = "JOHN DOE";
         String city = "AA";
         String numberPlate = VehicleHelper.numberPlateHelper(registeredCountry,city, "JB 007");

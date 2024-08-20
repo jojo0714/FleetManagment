@@ -8,6 +8,38 @@ import java.time.LocalDate;
 public interface Vehicles {
 
     /**
+     * Method to create a new vehicle
+     * @param chassisNumber Official chassis number
+     * @param type
+     * @param initialRegistrationDate
+     * @param registeredCountry
+     * @param owner
+     * @param numberPlate
+     * @param maxSpeed
+     * @param weight
+     * @return
+     */
+     static MotorizedVehicle newVehicle(EngineType engineType, String chassisNumber, VehicleType type,
+                                              LocalDate initialRegistrationDate, String registeredCountry,
+                                              String owner, String numberPlate,
+                                              int maxSpeed, int weight){
+         return null;
+     }
+
+    /**
+     * Method to load an existing vehicle. Method requires only one parameter, the other one can be null
+     * @param chasisNumber The official chassis Number of the vehicle
+     * @param numberPlate
+     * @return
+     */
+    static MotorizedVehicle loadVehicle(String chasisNumber, String numberPlate){
+        return null;
+    }
+
+    static boolean deleteVehicle(String chasisNumber, String numberPlate){
+        return false;
+    }
+    /**
      * Method to get the ident number of the vehicle
      * @return Ident number as String
      */
@@ -40,7 +72,7 @@ public interface Vehicles {
     LocalDate getInitialRegistrationDate();
 
     /**
-     * Method to get the owner of the vehicle
+     * Method to get the owner of the vehicle, first and last name seperated by a +
      * @return Owner of the vehicle as String
      */
     String getOwner();
